@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import LoginButton from "./Components/LoginButton";
+import LogoutButton from "./Components/LogoutButton";
+import ListArticleExcerpts from "./Components/ListArticleExcerpts";
+import Article from "./Components/Article";
+import NotFound from "./Components/404";
+import { ExcerptType } from "./Types/Article";
+import "./App.css";
+
+import data from "./data.json";
 
 function App() {
+  const excerpts: Array<ExcerptType> = data.articles;
+
+  const { isLoading, isAuthenticated, user } = useAuth0();
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/stories/:articleId">
+            <Article />
+          </Route>
+          <Route exact path="/">
+            <LoginButton />
+            <LogoutButton />
+            {isAuthenticated && <div>{user ? user.name : ''} Udało się zalogować</div>}
+            <ListArticleExcerpts excerpts={excerpts} />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
