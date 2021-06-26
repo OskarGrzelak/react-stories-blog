@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import LoginButton from "./Components/LoginButton";
-import LogoutButton from "./Components/LogoutButton";
+import Navbar from "./Components/Navbar";
 import ListArticleExcerpts from "./Components/ListArticleExcerpts";
 import Article from "./Components/Article";
 import NotFound from "./Components/404";
@@ -26,11 +25,11 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/stories/:articleId">
+            <Navbar />
             <Article />
           </Route>
           <Route exact path="/">
-            <LoginButton />
-            <LogoutButton />
+            <Navbar />
             {isAuthenticated && <div>{user ? user.name : ''} Udało się zalogować</div>}
             <ListArticleExcerpts excerpts={excerpts} />
           </Route>
