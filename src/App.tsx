@@ -6,13 +6,10 @@ import Layout from "./Components/Layout";
 import ListArticleExcerpts from "./Components/ListArticleExcerpts";
 import Article from "./Components/Article";
 import NotFound from "./Components/404";
-import { ExcerptType } from "./Types/Article";
 import "./App.css";
 
-import data from "./data.json";
 
 const App: React.FC = () => {
-  const excerpts: Array<ExcerptType> = data.articles;
 
   const { isLoading, isAuthenticated, user } = useAuth0();
 
@@ -32,7 +29,7 @@ const App: React.FC = () => {
               {isAuthenticated && (
                 <div>{user ? user.name : ""} Udało się zalogować</div>
               )}
-              <ListArticleExcerpts excerpts={excerpts} />
+              <ListArticleExcerpts />
             </Route>
             <Route path="*">
               <NotFound />

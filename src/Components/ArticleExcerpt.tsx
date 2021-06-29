@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ExcerptType as IProps } from "../Types/Article";
+import "./Article.css";
 
-interface Props {
-  excerptId: string;
-  title: string;
-  text: string;
-  author: string;
-}
-
-const ArticleExcerpt: React.FC<Props> = ({ excerptId, title, text, author }) => {
+const ArticleExcerpt: React.FC<IProps> = ({ _id, title, excerpt, author }) => {
   return (
-    <article>
-      <h2><Link to={`/stories/${excerptId}`}>{title}</Link></h2>
-      <h3>{author}</h3>
-      <p>{text}</p>
+    <article className="excerpt">
+      <div className="excerpt-header">
+        <h2>
+          <Link to={`/stories/${_id}`}>{title}</Link>
+        </h2>
+        <h3>{author}</h3>
+      </div>
+      <p>{excerpt}</p>
+      <Link to={`/stories/${_id}`}>Czytaj dalej</Link>
     </article>
   );
 };

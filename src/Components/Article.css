@@ -1,0 +1,23 @@
+.article,
+.excerpt {
+  max-width: 70ch;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.article-header,
+.excerpt-header {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.article-header::after,
+.excerpt-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  height: 1px;
+  max-width: 30ch;
+  width: 100%;
+  background-color: #c4c4c4;
+}
