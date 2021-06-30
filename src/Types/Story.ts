@@ -5,7 +5,7 @@ export type ExcerptType = {
   excerpt: string;
 };
 
-export type ArticleType = {
+export type StoryType = {
   _id: string;
   title: string;
   author: string;

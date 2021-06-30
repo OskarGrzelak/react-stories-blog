@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ExcerptType as IProps } from "../Types/Article";
-import "./Article.css";
+import { ExcerptType as IProps } from "../Types/Story";
+import "./Story.css";
 
-const ArticleExcerpt: React.FC<IProps> = ({ _id, title, excerpt, author }) => {
+const StoryExcerpt: React.FC<IProps> = ({ _id, title, excerpt, author }) => {
   return (
     <article className="excerpt">
       <div className="excerpt-header">
@@ -18,4 +18,4 @@ const ArticleExcerpt: React.FC<IProps> = ({ _id, title, excerpt, author }) => {
   );
 };
 
-export default ArticleExcerpt;
+export default StoryExcerpt;
