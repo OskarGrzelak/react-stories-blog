@@ -1,8 +1,13 @@
 import axios from "axios";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { StoryType } from "../Types/Story";
+import ScrollHandler from "./ScrollHandler";
+import Overlay from "./Overlay";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import StoryOptions from "./StoryOptions";
 import NotFound from "./404";
 
 interface ServerData {
@@ -50,7 +55,21 @@ const Story: React.FC = () => {
     );
   };
 
-  return renderStory();
+  return (
+    <ScrollHandler render={scrollingUp => (
+      <Fragment>
+        <Overlay scrollingUp={scrollingUp} position="top">
+          <Navbar />
+        </Overlay>
+        {renderStory()}
+        <Overlay scrollingUp={scrollingUp} position="bottom">
+          <StoryOptions />
+        </Overlay>
+        <Footer />
+      </Fragment>
+    )}>
+    </ScrollHandler>
+  );
 };
 
 export default Story;

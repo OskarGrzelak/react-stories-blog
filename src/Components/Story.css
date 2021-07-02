@@ -2,6 +2,13 @@
 .excerpt {
   max-width: 70ch;
   width: 100%;
+}
+
+.article {
+  margin: 130px auto 50px;
+}
+
+.excerpt {
   margin: 50px auto;
 }
 

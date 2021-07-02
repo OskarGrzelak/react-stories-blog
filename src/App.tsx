@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import Layout from "./Components/Layout";
-import ListStoriesExcerpts from "./Components/ListStoriesExcerpts";
+import Home from "./Components/Home";
 import Story from "./Components/Story";
 import NotFound from "./Components/404";
 import "./App.css";
@@ -29,7 +29,7 @@ const App: React.FC = () => {
               {isAuthenticated && (
                 <div>{user ? user.name : ""} Udało się zalogować</div>
               )}
-              <ListStoriesExcerpts />
+              <Home />
             </Route>
             <Route path="*">
               <NotFound />

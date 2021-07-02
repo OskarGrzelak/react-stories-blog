@@ -1,0 +1,23 @@
+.overlay {
+  position: fixed;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.overlay.overlay-top {
+  top: 0;
+}
+
+.overlay.overlay-bottom {
+  bottom: 0;
+}
+
+.overlay.hide {
+  opacity: 0;
+  visibility: hidden;
+}
